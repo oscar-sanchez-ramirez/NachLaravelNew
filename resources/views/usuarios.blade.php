@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -16,12 +16,12 @@
         <div class="row mt-5 justify-content-center">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="{{ route('export') }}" class="btn btn-outline-info">Exportar usuarios</a>
+                    <a href="{{ route('export') }}" class="btn btn-outline-info shadow">Exportar usuarios</a>
                 </div>
             </div>
-            <hr class="mt-4 mb-4"/>
+            <hr class="mt-4 mb-4" />
             <div class="col-md-6">
-                <table class="table table-hover shadow">
+                <table class="table table-hover shadow-lg">
                     <thead class="bg-secondary text-white">
                         <tr>
                             <th>Nombre</th>
@@ -37,6 +37,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $usuarios->links() }}
             </div>
         </div>
     </div>

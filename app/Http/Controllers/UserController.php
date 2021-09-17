@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function usuarios()
     {
-        $usuarios = User::all();
+        $usuarios = User::paginate(10);
         toast('Lista de usuarios', 'success')->timerProgressBar();
         return view('usuarios', compact('usuarios'));
     }
