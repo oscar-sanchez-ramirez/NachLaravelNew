@@ -14,8 +14,14 @@
     @include('sweetalert::alert')
     <div class="container">
         <div class="row mt-5 justify-content-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('export') }}" class="btn btn-outline-info">Exportar usuarios</a>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4"/>
             <div class="col-md-6">
-                <table class="table table-hover">
+                <table class="table table-hover shadow">
                     <thead class="bg-secondary text-white">
                         <tr>
                             <th>Nombre</th>

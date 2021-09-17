@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -27,12 +29,12 @@ class UserController extends Controller
     public function usuarios()
     {
         $usuarios = User::all();
-        //  toast('Usuarios!','success');
-        // example:
-        // example:
-        // example:
-        toast('Signed in successfully', 'success')->timerProgressBar();
-
+        toast('Lista de usuarios', 'success')->timerProgressBar();
         return view('usuarios', compact('usuarios'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }
