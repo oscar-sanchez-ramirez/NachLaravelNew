@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/users', [UserController::class, 'usuarios'])->name('usuarios');
 Route::get('users/export/', [UserController::class,'export'])->name('export');
 Route::get('users/list', [UserController::class, 'getUsers'])->name('users.list');
+Route::get('users/listado', [UserController::class, 'listado'])->name('users.listado');
+

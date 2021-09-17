@@ -26,9 +26,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
