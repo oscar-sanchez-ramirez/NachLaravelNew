@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <div class="container">
         <div class="row mt-5 justify-content-center">
             <div class="col-md-6">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -26,8 +27,12 @@ class UserController extends Controller
     public function usuarios()
     {
         $usuarios = User::all();
-        return view('usuarios', compact('usuarios'));
-       
+        //  toast('Usuarios!','success');
+        // example:
+        // example:
+        // example:
+        toast('Signed in successfully', 'success')->timerProgressBar();
 
+        return view('usuarios', compact('usuarios'));
     }
 }
