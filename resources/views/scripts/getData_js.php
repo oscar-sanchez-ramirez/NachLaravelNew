@@ -28,21 +28,26 @@
         const name = document.querySelector('#IDname').value;
         const email = document.querySelector('#IDemail').value;
         const password = document.querySelector('#IDpassword').value;
-        
 
         f.append('name', name);
         f.append('email', email);
         f.append('password', password);
         f.append('estatus', 1);
         f.append('avatar', 'images/postUsuario');
+
         axios.post(urlPost, f)
-            .then(function(response) {
+            .then( response => {
                 console.log('POST axios');
-                document.getElementById('myform').reset();
-                alert(response.data.msj);
-                console.log(response.data);
+                if (response.data.status === 'ok') {
+                    document.getElementById('myform').reset();
+                    console.log(response.data);
+                    alert(response.data.msj);
+                }
+                if (response.data.status === 'error') {
+                    console.log(response.data);
+                }
             })
-            .catch(function(error) {
+            .catch( error => {
                 alert(error);
                 console.log(error);
             });

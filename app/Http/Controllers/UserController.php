@@ -74,17 +74,21 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function testPost(UserRequest $request)
+    public function testPost(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|max:255|email',
-            'password' => 'required|max:255'
+            'email' => 'required|max:255|email|unique:users',
+            'password' => 'required|max:255|'
         ]);
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return $errors->toJson();
+            return  response()->json([
+                'status' => 'error',
+                'msj' => 'errores',
+                'data' => $errors
+            ]);
         }
 
         $user = new User();
