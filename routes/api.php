@@ -23,10 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('users', [UserController::class,'index'])->name('users.index');
-
 Route::get('test', [UserController::class, 'test'])->name('test');
-
 Route::post('testPost', [UserController::class, 'testPost'])->name('testPost');
+Route::post('testEdit/{user}', [UserController::class, 'testEdit'])->name('testEdit');
+Route::post('correo', [UserController::class, 'correo'])->name('correo');
+
+
 
 
 

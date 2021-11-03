@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -38,14 +38,17 @@
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <button class="btn btn-outline-primary mt-5" onclick="getAxios();">Axios</button>
-                <button class="btn btn-outline-info mt-5" onclick="getFetch();">Fetch</button>
-                <form action="javascript:void(0)" method="POST" id="myform">
+                <button class="btn btn-outline-primary mt-5" title="Lista de usuarios de la base de pirita" onclick="getAxios();">Axios</button>
+                <button class="btn btn-outline-info mt-5" title="Lista de usuarios de la base de pirita" onclick="getFetch();">Fetch</button>
+                <form class="form-group" action="javascript:void(0)" method="POST" id="myform">
                     <input class="form-control mt-2" type="text" name="name" id="IDname" placeholder="Nombre" style="display: block" required>
                     <input class="form-control mt-2" type="email" name="email" id="IDemail" placeholder="email@ejemplo.com" style="display: block" required>
-                    <input type="password" name="password" value="12345678" style="display: none">
-                    <input type="passowrd" class="form-control mt-2" name="password" id="IDpassword" placeholder="Contraseña">
-                    <button type="submit" class="btn btn-outline-success mt-5" onclick="postUser();">Crear Usuario</button>
+                    <input type="password" class="form-control mt-2" name="password" id="IDpassword" placeholder="Contraseña">
+                    <input type="text" class="form-control mt-2" name="subject" id="IDSubjet" placeholder="Asunto">
+                    <button type="submit" class="btn btn-outline-success mt-2" onclick="postUser();">Crear Usuario</button>
+                    <button type="submit" class="btn btn-outline-primary mt-2" onclick="editUser();">Editar Usuario</button>
+                    <button type="submit" class="btn btn-outline-info mt-2" onclick="correo();">Enviar correo</button>
+
                 </form>
             </div>
         </div>

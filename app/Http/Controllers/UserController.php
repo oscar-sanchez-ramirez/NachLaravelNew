@@ -12,6 +12,9 @@ use DataTables;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
+
 class UserController extends Controller
 {
     public function index(Request $request)
@@ -66,7 +69,7 @@ class UserController extends Controller
 
     public function test()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'desc')->get();
         return response()->json([
             'status' => 'ok',
             'msj' => 'usuarios de pirita',
@@ -101,6 +104,59 @@ class UserController extends Controller
             'status' => 'ok',
             'msj' => 'usuario de pirita creado',
             'data' => $user
+        ]);
+    }
+
+    public function testEdit(Request $request, User $user)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            //'email' => 'required|max:255|email|unique:users,'.$user->id,
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return  response()->json([
+                'status' => 'error',
+                'msj' => 'errores',
+                'data' => $errors
+            ]);
+        }
+
+        $user->name = $request->name;
+        if ($user->save()) {
+
+            return response()->json([
+                'status' => 'ok',
+                'msj' => 'Usuario editado',
+                'data' => $user
+            ]);
+        }
+    }
+
+    public function correo(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:255|email',
+            'subject' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return  response()->json([
+                'status' => 'error',
+                'msj' => 'errores',
+                'data' => $errors
+            ]);
+        }
+        
+        $test = new TestMail($request->subject);
+        Mail::to($request->email)->send($test);
+
+        return response()->json([
+            'status' => 'ok',
+            'msj' => 'correo enviado',
         ]);
     }
 }
